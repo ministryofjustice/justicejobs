@@ -1,0 +1,6 @@
+{
+    "name": "ministryofjustice/justicejobs",
+    "description": "Justice Jobs theme",
+    "type": "wordpress-theme",
+    "require": {}
+}

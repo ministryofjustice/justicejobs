@@ -1,0 +1,436 @@
+.hero {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    overflow: hidden;
+    max-width: 100%;
+
+    @include respond-to(md) {
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+
+    &__img-block {
+        position: relative;
+        padding: 0 35px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 750px;
+
+        .hero--home & {
+            align-items: flex-end;
+        }
+
+        @include respond-to(sm) {
+            padding: 0 45px;
+            justify-content: flex-start;
+        }
+        @include respond-to(md) {
+            align-items: center;
+        }
+
+    }
+
+    &--job {
+        .breadcrumbs {
+            @include respond-to(md) {
+                display: none;
+            }
+        }
+
+        .hero__img-block {
+            @include respond-to(sm) {
+                max-height: 60vh;
+            }
+        }
+
+        .hero__text-wrap {
+            @include respond-to(sm) {
+                margin-bottom: 50px;
+                align-self: flex-end;
+            }
+        }
+
+        .heading--lg {
+            @include respond-to(sm) {
+                font-size: 3.6rem;
+            }
+        }
+    }
+
+    &--agency &__text-wrap {
+        max-width: 690px;
+    }
+
+    &--home &__img-block {
+        @include respond-to(sm) {
+            justify-content: center;
+        }
+    }
+
+    &__img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.45);
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+
+        &--desktop {
+            display: none;
+
+            @include respond-to(md) {
+                display: block;
+            }
+        }
+
+        &--mobile {
+            @include respond-to(md) {
+                display: none;
+            }
+        }
+    }
+
+    &__img_description {
+        display: none;
+        position: absolute;
+        bottom: 10px;
+        left: auto;
+        right: 5px;
+        width: 100%;
+        text-align: right;
+
+        @include respond-to(md) {
+            display: block;
+            width: 50%;
+        }
+    }
+
+    &--home &__img-block {
+        padding: 0;
+    }
+
+    &__line {
+        display: none;
+
+        @include respond-to(md) {
+            position: absolute;
+            top: 50vh;
+            left: 52vw;
+            display: block;
+            width: 843px;
+            height: 83px;
+            fill: rgba(#fff, 0.8);
+        }
+    }
+
+    &__text-wrap {
+        position: relative;
+        padding: 25px 20px;
+        padding-right: 0;
+        max-width: 550px;
+        width: 100%;
+
+        .hero--home & {
+            background: $dark-blue;
+        }
+
+        @include respond-to(md) {
+            // padding: 45px 50px;
+            //max-width: 620px;
+            background: none;
+
+            .hero--home & {
+                background: none;
+            }
+        }
+
+        @include respond-to(sm) {
+            max-width: 720px;
+            padding: 45px 50px;
+        }
+
+        p {
+            line-height: 1.53;
+            font-size: 1.8rem;
+            letter-spacing: 0.16px;
+
+            @include respond-to(sm) {
+                font-size: 2.2rem;
+                letter-spacing: 0.19px;
+            }
+
+        }
+
+
+        p.text-highlight span {
+            display: block;
+            max-width: 80%;
+            margin: 0 auto;
+        }
+
+        .btn {
+            margin-top: 50px;
+            @include respond-to(md) {
+                display: none;
+            }
+        }
+    }
+
+    span.text-highlight {
+        box-shadow: -20px 3px 0 3px $dark-grey, 20px 3px 0 3px $dark-grey;
+        background-color: $dark-grey;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+        line-height: 1.55;
+    }
+
+    p span.text-highlight {
+        padding: 6px 0;
+    }
+
+    ul.text-highlight > li {
+        box-shadow: -3px 0px 0 3px #29363B, 6px 0px 0 3px #29363B;
+        background-color: $dark-grey;
+    }
+
+    &--home &__text-wrap {
+        padding: 20px;
+        text-align: center;
+
+        span.text-highlight.front-page {
+            box-shadow: -20px 3px 0 3px $dark-blue, 20px 3px 0 3px $dark-blue;
+            background-color: $dark-blue;
+
+            @include respond-to(md){
+                max-width: 690px;
+            }
+        }
+
+        @include respond-to(md) {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 690px;
+        }
+
+        @include respond-to(lg) {
+            position: relative;
+            top: auto;
+            left: auto;
+            margin-left: 30px;
+            margin-right: 30px;
+            align-self: center;
+            transform: none;
+            width: calc(100vw - 700px);
+        }
+        @include respond-to(xl) {
+            width: calc(100vw - 800px);
+        }
+    }
+
+    &__heading-wrap {
+        position: relative;
+        margin-bottom: 30px;
+        padding: 24px 0;
+
+        @include respond-to(md) {
+            margin-bottom: 70px;
+            padding: 54px 0;
+
+            .hero--home & {
+                margin-top: 80px;
+            }
+        }
+    }
+
+    &__arrow {
+        position: absolute;
+        width: 37px;
+        height: 24px;
+        fill: #fff;
+
+        @include respond-to(md) {
+            width: 82px;
+            height: 54px;
+        }
+
+        &--top {
+            top: 0;
+            left: 0;
+        }
+
+        &--bottom {
+            bottom: 0;
+            right: 0;
+            transform: rotate(180deg);
+        }
+    }
+
+    &--arrows &__arrow {
+        fill: #fff;
+    }
+
+    &--arrows.hero--job &__arrow {
+        fill: #fff;
+
+        @include respond-to(sm) {
+            fill: $light-blue;
+        }
+    }
+
+    .heading--lg,
+    .heading--md {
+        color: inherit;
+    }
+
+    .heading--lg {
+        margin-bottom: 15px;
+    }
+
+    &--home {
+        .heading--lg {
+            margin-bottom: 0;
+            text-align: center;
+
+            @include respond-to(md) {
+                width: 30rem;
+                margin: auto;
+            }
+        }
+    }
+
+    &__search {
+        padding: 50px;
+        width: 100%;
+        display: block;
+        color: #000000;
+        background-color: #ffffff;
+
+        @include respond-to(sm) {
+            width: 50%;
+        }
+
+        &--campaign,
+        &--agency {
+            @include respond-to(sm) {
+                position: absolute;
+                right: 0;
+                bottom: 0;
+                width: 350px;
+            }
+            @include respond-to(lg) {
+                position: absolute;
+                bottom: 70px;
+            }
+            @include respond-to(xl) {
+                width: 400px;
+            }
+
+            .heading--sm {
+                color: $light-blue;
+            }
+        }
+
+        &--agency {
+            position: relative;
+
+            &::before {
+                position: absolute;
+                bottom: 0;
+                left: 20px;
+                right: 20px;
+                display: block;
+                height: 1px;
+                background: $light-grey;
+                content: '';
+            }
+
+            @include respond-to(sm) {
+                position: absolute;
+
+                &::before {
+                    display: none;
+                }
+            }
+
+            .heading--sm {
+                color: $light-green;
+                text-align: center;
+
+                @include respond-to(sm) {
+                    text-align: left;
+                }
+            }
+        }
+
+        .heading--sm {
+            margin-bottom: 25px;
+        }
+
+        .dropdown {
+            margin-bottom: 20px;
+        }
+
+        .row {
+            margin-bottom: 20px;
+            font-size: 1.7rem;
+            letter-spacing: 0.15px;
+            line-height: 1.2;
+
+            > span {
+                margin-right: 20px;
+                display: inline-block;
+            }
+        }
+
+        &--fieldset {
+            border: 0;
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    &__carousel {
+        display: block;
+        width: 100%;
+        min-height: 285px;
+        display: flex;
+        flex-direction: column;
+        align-self: stretch;
+        background: $light-blue;
+
+        @include respond-to(sm) {
+            width: 50%;
+        }
+    }
+
+    &__badge {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        padding: 35px;
+        padding-bottom: 0;
+        padding-right: 70px;
+        background: #fff;
+    }
+
+    &__404 {
+        .hero__text-wrap {
+            max-width: none;
+
+            a {
+                color: $light-blue;
+            }
+        }
+    }
+}

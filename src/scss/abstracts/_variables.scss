@@ -1,0 +1,57 @@
+
+$text-font-stack: 'Barlow', 'Arial', sans-serif !default;
+
+$font-size-small: 1rem;
+
+$font-size-large-medium: 1.9rem;
+
+$text-color: #020202 !default;
+
+$brand-color: rgb(229, 0, 80) !default;
+
+$focus-orange: #fecf43 !default;
+
+$light-blue: #00b1eb !default;
+
+$mid-blue: #336699 !default;
+
+$dark-blue: #2c5d94 !default;
+
+$darker-blue: rgb(45, 96, 153) !default;
+
+$even-darker-blue: rgb(15, 48, 84) !default;
+
+$orange-color: #f68000 !default;
+
+$dark-green: #186a5d !default;
+
+$light-green: #87bb05 !default;
+
+
+$red-color: #f52b64 !default;
+
+$purple-color: #620067 !default;
+
+$light-grey: #d9d9d9 !default;
+
+$dark-grey: #29363B !default;
+
+
+$trans-dark-grey: rgba(41, 54, 59, 0.9) !default;
+
+
+$max-width: 1170px !default;
+
+$breakpoints: (
+    'xs': screen and ( min-width: 500px ),
+    'sm': screen and ( min-width: 768px ),
+    'lm': screen and ( min-width: 813px ),
+    'md': screen and ( min-width: 1024px ),
+    'lg': screen and ( min-width: 1280px ),
+    'xl': screen and ( min-width: 1440px ),
+    'xxl':screen and ( min-width: 1920px )
+) !default;
+
+$common-spacing: 10;
+
+$base-url: '/src/' !default;

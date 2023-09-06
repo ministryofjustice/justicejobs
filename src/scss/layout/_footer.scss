@@ -1,0 +1,200 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the footer of the site/application.
+// -----------------------------------------------------------------------------
+.page-footer {
+    padding-top: 73px;
+    padding-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    background: #000;
+    text-align: center;
+
+    @include respond-to(md) {
+        padding-top: 50px;
+        padding-bottom: 50px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    &__col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #ffffff;
+        font-size: 1.5rem;
+        font-weight: 300;
+
+        @include respond-to(md) {
+            align-items: flex-start;
+        }
+
+        &:first-child {
+            margin-bottom: 50px;
+            order: -2;
+
+            @include respond-to(md) {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .social {
+        margin-bottom: 50px;
+        order: -1;
+
+        @include respond-to(sm) {
+            order: 0;
+        }
+
+        a {
+            padding: 3px;;
+
+            &:focus, &:hover, &:active {
+                opacity: .8;
+            }
+
+            &:focus {
+                outline: 2px solid $focus-orange;
+            }
+        }
+    }
+
+    &__copy {
+        margin-bottom: 40px;
+        max-width: 400px;
+        @include respond-to(md) {
+            display: none;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        a {
+            color: #fff;
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-decoration: underline;
+        }
+    }
+
+    &__nav {
+        @include respond-to(md) {
+            display: flex;
+            align-items: center;
+        }
+
+        ul {
+            list-style: none;
+
+            @include respond-to(md) {
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        li {
+            &:not(:last-child) {
+                margin-bottom: 25px;
+            }
+
+            @include respond-to(md) {
+                &:not(:last-child) {
+                    margin-bottom: 0;
+                }
+                margin-right: 15px;
+            }
+        }
+
+        a {
+            color: #ffffff;
+            font-size: 1.6rem;
+            font-weight: 500;
+            text-decoration: none;
+
+            @include respond-to(md) {
+                font-weight: 300;
+            }
+
+            &:focus, &:hover, &:active {
+                text-decoration: underline;
+            }
+
+            &:focus {
+                outline: 2px solid $focus-orange;
+            }
+        }
+    }
+
+    &__logo {
+        margin-bottom: 15px;
+
+        @include respond-to(md) {
+            margin-bottom: 25px;
+        }
+
+        &:focus, &:hover, &:active {
+            opacity: .9;
+        }
+
+        &:focus {
+            outline: 2px solid $focus-orange;
+        }
+
+        img {
+            width: 215px;
+            height: 31px;
+        }
+    }
+
+    &__copyright {
+        font-weight: 500;
+        font-size: 1.6rem;
+
+        &--desktop {
+            display: none;
+
+            @include respond-to(md) {
+                display: block;
+            }
+        }
+
+        &--mobile {
+            @include respond-to(md) {
+                display: none;
+            }
+        }
+    }
+
+    &__crown-wrap {
+        margin-bottom: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #ffffff;
+        font-size: 0.8rem;
+        font-weight: 400;
+        line-height: 12px;
+
+        img {
+            width: 63px;
+            height: 52px;
+        }
+
+        p {
+            margin-top: 5px;
+        }
+
+        @include respond-to(md) {
+            font-size: 1.6rem;
+            font-weight: 400;
+            img {
+                width: 127px;
+                height: 100px;
+            }
+        }
+    }
+}

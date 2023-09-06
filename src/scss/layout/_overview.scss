@@ -1,0 +1,90 @@
+.overview {
+  @include respond-to(md) {
+    padding: 100px 45px 0px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__text-wrap {
+    padding: 40px 15px;
+
+    @include respond-to(md) {
+      padding: 0;
+      width: 50%;
+    }
+  }
+
+  &__text {
+
+    @include respond-to(md) {
+      float: left;
+      padding-right: 5%;
+    }
+  }
+
+  .heading--md {
+    margin-bottom: 20px;
+    color: $mid-blue;
+
+    @include respond-to(md) {
+      margin-bottom: 10px;
+    }
+  }
+
+  .heading--body {
+    margin-bottom: 15px;
+  }
+
+  p:not(.heading--body):not(:last-child) {
+    margin-bottom: 30px;
+
+    @include respond-to(md) {
+      margin-bottom: 15px;
+    }
+  }
+
+  &__video-wrap {
+
+    @include respond-to(md) {
+      float: left;
+      padding-top: 60px;
+      width: 50%;
+      text-align: center;
+    }
+
+    &.overview__video_has_title {
+
+      @include respond-to(md) {
+        padding-top: 0;
+      }
+    }
+
+    h3 {
+      text-align: left;
+
+      @include respond-to(sm) {
+        margin-bottom: 20px;
+      }
+      @include respond-to(md) {
+        margin-top: 10px;
+      }
+    }
+  }
+
+  &__video * {
+    max-width: 100%;
+
+    &::before {
+      max-width: 100%;
+    }
+
+    &::after {
+      max-width: 100%;
+    }
+
+    video {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}

@@ -1,0 +1,147 @@
+.work {
+  padding-top: 50px;
+  > .heading--md {
+    margin-bottom: 10px;
+    text-align: center;
+
+  }
+
+  &__heading {
+    color: #000!important;
+  }
+
+
+  &__carousel {
+    width: 100%;
+
+    .carousel__wrap .btn-secondary {
+      margin-top: 0;
+      font-size: 1.8rem;
+      position: relative;
+      z-index: 120;
+    }
+
+    .carousel__slide {
+      width: 100%;
+      height: 50%;
+
+      > a {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 100;
+      }
+
+      @include respond-to(md) {
+        width: 50%;
+        height: 100%;
+      }
+    }
+
+    .heading--body {
+      max-height: 160px;
+
+      @include respond-to(md) {
+        max-height: none;
+      }
+    }
+  }
+
+  .carousel__dots {
+    left: 15px;
+
+    @include respond-to(md) {
+      left: 50px;
+    }
+  }
+
+  &__text-block {
+    position: relative;
+    padding: 35px 10px;
+    min-height: 50%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // background: $purple-color;
+    overflow: hidden;
+
+    @include respond-to(sm) {
+      padding: 70px 30px;
+    }
+    @include respond-to(md) {
+      padding: 50px 30px;
+      width: 50%;
+      height: 100%;
+    }
+    @include respond-to(xl) {
+      padding: 50px;
+    }
+
+    > svg {
+      position: absolute;
+      bottom: 5%;
+      left: 40%;
+      transform: translateX(-50%);
+      width: 150vw;
+      fill: rgba(#fff, 0.5);
+
+      @include respond-to(md) {
+        bottom: 2%;
+        width: 100vw;
+      }
+    }
+  }
+
+  &__text-wrap {
+    position: relative;
+    padding: 25px;
+    width: 100%;
+    color: #fff;
+
+    @include respond-to(md) {
+      padding: 55px 50px;
+    }
+    @include respond-to(lg) {
+      padding: 70px 50px;
+    }
+
+    .quote-copy {
+      color: #fff;
+    }
+
+    svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 37px;
+      height: 24px;
+      fill: #fff;
+
+      &:last-child {
+        top: auto;
+        left: auto;
+        right: 0;
+        bottom: 0;
+        transform: rotate(180deg);
+      }
+
+      @include respond-to(md) {
+        width: 82px;
+        height: 54px;
+      }
+    }
+  }
+
+  &__cite-wrap {
+    margin-top: 10px;
+    span {
+      margin-right: 5px;
+      &:last-child {
+        font-weight: 400;
+      }
+    }
+  }
+}
