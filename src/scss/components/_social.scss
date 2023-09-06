@@ -1,0 +1,20 @@
+.social {
+  width: 100%;
+  display: flex;
+  list-style: none;
+  justify-content: center;
+
+  @include respond-to(md) {
+    justify-content: flex-start;
+  }
+
+  li {
+    &:not(:last-child) {
+      margin-right: 15px;
+    }
+  }
+
+  svg {
+    fill: #fff;
+  }
+}

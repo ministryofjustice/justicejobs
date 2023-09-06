@@ -1,0 +1,106 @@
+/**
+ * Basic typography style for copy text
+ */
+
+html {
+    // This defines what 1 rem is
+    font-size: 62.5%;
+}
+
+body {
+    color: $text-color;
+    font: normal 1.8rem / 1.5 $text-font-stack;
+}
+
+input,
+button {
+    font-family: $text-font-stack;
+}
+
+.heading--lg {
+    font-weight: 700;
+    line-height: 0.9;
+    color: #000;
+    font-size: 5rem;
+    letter-spacing: 0.43px;
+
+    @include respond-to(sm) {
+        letter-spacing: 0.64px;
+        font-size: 7.4rem;
+    }
+}
+
+.heading--md {
+    font-size: 2.6rem;
+    font-weight: 700;
+    letter-spacing: 0.31px;
+    line-height: 1.32;
+    color: #000;
+
+    @include respond-to(sm) {
+        font-size: 2.8rem;
+    }
+    @include respond-to(md) {
+        font-size: 3.6rem;
+    }
+}
+
+.heading--sm {
+    font-size: 2.6rem;
+    font-weight: 600;
+    line-height: 1.15;
+    color: #000;
+}
+
+.heading--sm-text {
+    font-size: 1.8rem;
+}
+
+.heading--xs {
+    font-size: 1.4rem;
+    color: #ffffff;
+    font-weight: 600;
+    letter-spacing: 0.12px;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.heading--xxs {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.76px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.heading--body {
+    color: #020202;
+    font-size: 2.2rem;
+    line-height: 1.53;
+    letter-spacing: 0.19px;
+}
+
+.heading--carousel {
+    color: #fff;
+    font-size: 2.6rem;
+    font-weight: 700;
+    letter-spacing: 0.39px;
+    line-height: 1.1;
+}
+
+.quote-copy {
+    color: #000000;
+    font-size: 2.6rem;
+    letter-spacing: 0.23px;
+    line-height: 1.33;
+
+    @include respond-to(sm) {
+        letter-spacing: 0.31px;
+        font-size: 3.6rem;
+    }
+}
+
+u {
+    text-decoration: none;
+}

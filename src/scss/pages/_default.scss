@@ -1,0 +1,51 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the default page template.
+// -----------------------------------------------------------------------------
+
+.page-template-default {
+  .page-content {
+    margin-bottom: 100px;
+    max-width: 100rem;
+
+    &__wrap {
+      padding: 40px 15px;
+      @include respond-to(md) {
+        padding: 40px 45px;
+      }
+      @include respond-to(lg) {
+        padding: 40px 130px;
+      }
+
+      ul {
+        margin-left: 2rem;
+        margin-bottom: 20px;
+
+        @include respond-to(sm) {
+          margin-bottom: 10px;
+        }
+      }
+
+      h2, h3 {
+        margin-bottom: 20px;
+
+        @include respond-to(sm) {
+          margin-bottom: 10px;
+        }
+      }
+
+      p:not(:last-child) {
+        margin-bottom: 20px;
+
+        @include respond-to(md) {
+          margin-bottom: 15px;
+        }
+      }
+
+      table {
+        width: 100%;
+      }
+
+    }
+
+  }
+}

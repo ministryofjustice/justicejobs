@@ -1,0 +1,29 @@
+.input {
+    padding: 15px 18px;
+    width: 100%;
+    min-height: 50px;
+    font-size: 1.7rem;
+    letter-spacing: 0.15px;
+    line-height: 1.1;
+    background: #fff;
+    border: 1px solid $dark-grey;
+    border-radius: 3px;
+
+    &::placeholder {
+        color: $text-color;
+        opacity: 1;
+    }
+
+    &:hover, &:focus, &:active {
+        border-color: $light-blue;
+    }
+
+    &:focus {
+        outline: 4px solid $focus-orange;
+    }
+
+    &:focus::placeholder {
+        border-color: #aaa;
+        color: rgba(#2a363b, 0.5);
+    }
+}

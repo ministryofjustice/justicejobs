@@ -1,0 +1,219 @@
+.accordion {
+    &__block {
+        position: relative;
+        margin-top: -1px;
+        padding: 0 20px;
+        @include transition;
+
+        @include respond-to(lg) {
+            padding: 0;
+        }
+
+        &:first-child .accordion__btn::before {
+            max-width: calc(100vw - 40px);
+
+            @include respond-to(lg) {
+                max-width: 1160px;
+            }
+        }
+
+        &.is-opened:first-child .accordion__btn {
+            border-top: none;
+        }
+
+        &.is-opened {
+            background-color: rgba(#a0a5b4, 0.1);
+            padding: 12px;
+
+            .accordion__btn {
+                position: static;
+                border-bottom: 1px solid rgba(#a0a5b4, 0.36);
+
+                &::before,
+                &::after {
+                    max-width: 100vw;
+                }
+
+                @include target-ie-10-11 {
+                    justify-content: flex-start;
+
+                    .btn-plus {
+                        margin-left: auto;
+                    }
+
+                }
+            }
+
+            .btn-plus {
+                transform: rotate(45deg);
+
+                @include target-ie-10-11 {
+                    margin-left: auto;
+                }
+            }
+
+        }
+    }
+
+    &__btn {
+        padding: 20px 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #2a363b;
+        font-size: 1.8rem;
+        line-height: 1;
+        font-weight: 700;
+        background: none;
+        border: none;
+        cursor: pointer;
+        border-bottom: 1px solid #a0a5b4;
+        @include transition;
+
+        span:first-child {
+            margin-right: auto;
+        }
+
+        @include respond-to(sm) {
+            font-size: 2.8rem;
+        }
+
+        &::before,
+        &::after {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 0;
+            height: 1px;
+            display: block;
+            background: #a0a5b4;
+            content: '';
+            @include transition;
+        }
+
+        &::before {
+            top: 0;
+        }
+
+        &::after {
+            bottom: 0;
+        }
+    }
+
+    &__content-wrap {
+        padding-top: 22px;
+        padding-bottom: 60px;
+        display: none;
+
+        h3 {
+            margin-bottom: 15px;
+            color: #000000;
+            font-size: 2.8rem;
+            font-weight: 300;
+            letter-spacing: 0.7px;
+            line-height: 1;
+        }
+
+        p {
+            margin-bottom: 30px;
+        }
+
+        ul {
+            margin-bottom: 50px;
+            list-style-position: inside;
+        }
+
+        li {
+            &:not(:last-child) {
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+    &__quote {
+        padding: 30px;
+        color: #ffff;
+        background: $dark-blue;
+
+        @include respond-to(sm) {
+            padding: 50px;
+        }
+
+        blockquote {
+            font-size: 3.2rem;
+            font-weight: 300;
+            letter-spacing: 0.8px;
+            line-height: 1.1;
+            color: #fff;
+            text-align: center;
+        }
+
+        cite {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-style: normal;
+
+            span {
+                margin-left: 10px;
+                font-weight: 400;
+            }
+        }
+    }
+}
+
+.inner_accordion__content-wrap {
+
+    p {
+        margin-bottom: 15px;
+    }
+
+    h4 {
+        margin-top: 15px;
+        margin-bottom: 10px;
+        color: #000000;
+        font-size: 2rem;
+        font-weight: 300;
+        letter-spacing: 0.7px;
+        line-height: 1;
+    }
+}
+
+.inner_accordion__block {
+
+    &.inner_is-opened {
+        background-color: rgba(#a0a5b4, 0.1);
+
+        .inner_accordion__btn {
+            position: static;
+            border-bottom: 1px solid rgba(#a0a5b4, 0.36);
+
+            &::before,
+            &::after {
+                max-width: 100vw;
+            }
+        }
+
+        .inner_btn-plus {
+            transform: rotate(45deg);
+        }
+
+    }
+
+    .inner_accordion--container {
+        width: 90%;
+
+        @include respond-to(sm) {
+            width: 60%;
+        }
+    }
+
+    .inner_accordion__btn {
+        @extend .accordion__btn;
+        font-size: 2rem;
+    }
+
+}

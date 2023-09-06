@@ -1,0 +1,298 @@
+.campaign {
+  padding-top: 25px;
+  position: relative;
+
+  @include respond-to(sm) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .heading--md {
+    margin-bottom: 25px;
+    color: $mid-blue;
+    text-align: center;
+  }
+
+  &--container {
+    margin: 0 auto;
+    max-width: 1160px;
+    width: 100%;
+  }
+
+  &__intro-block {
+    margin-top: 60px;
+    margin-bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include respond-to(sm) {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .heading--md {
+      text-align: left;
+    }
+
+    p:not(:last-child) {
+      margin-bottom: 25px;
+    }
+  }
+
+  &__image {
+      @include respond-to(sm) {
+          padding-left: 20px;
+      }
+  }
+
+  &__video {
+    text-align: center;
+    float: left;
+    position: relative;
+    padding-bottom: 300px;
+    overflow: hidden;
+    max-width: 100%;
+    height: auto;
+
+
+    iframe,
+    object,
+    embed {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    video {
+      height: auto;
+    }
+
+    @include respond-to(md) {
+      position: relative;
+      padding-bottom: 300px;
+      overflow: hidden;
+      max-width: 100%;
+      height: auto;
+
+
+      iframe,
+      object,
+      embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  &__text-col {
+    margin-bottom: 60px;
+
+    @include respond-to(sm) {
+      margin-bottom: 0;
+      width: 800px;
+    }
+  }
+
+  &__vid-col {
+    position: relative;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 60px;
+
+
+    iframe,
+    object,
+    embed {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    @include respond-to(md) {
+      float: left;
+      padding-bottom: 60px;
+      padding-right: 20px;
+      margin-bottom: 60px;
+      width: 50%;
+      text-align: left;
+
+      position: relative;
+      padding-bottom: 300px;
+      overflow: hidden;
+      max-width: 100%;
+      height: auto;
+
+
+      iframe,
+      object,
+      embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+  }
+
+  &__vid-col:nth-of-type(1) {
+    text-align: right;
+  }
+
+  &__accordion {
+    margin-bottom: 90px;
+
+    h2 {
+      color: #336699;
+      margin-bottom: 25px;
+    }
+  }
+
+  &__carousel-wrap {
+    position: relative;
+    margin-bottom: 80px;
+    padding-bottom: 50px;
+
+    @include respond-to(lg) {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+
+  .carousel__dots {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    li {
+      &:not(:last-child) {
+        margin-right: 12px;
+      }
+    }
+
+    button {
+      width: 12px;
+      height: 12px;
+      border: 1px solid $light-blue;
+    }
+
+  }
+
+  .carousel__arrow {
+    svg {
+      width: 23px;
+      height: 40px;
+      fill: $light-blue;
+    }
+
+    &--prev {
+      left: 20px;
+
+      @include respond-to(lg) {
+        left: 0;
+      }
+
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+
+    &--next {
+      right: 20px;
+
+      @include respond-to(lg) {
+        right: 0;
+      }
+    }
+  }
+
+  &__slide {
+    width: 100%;
+
+    @include respond-to(sm) {
+      margin: 0 30px;
+    }
+  }
+
+  &__people {
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+    max-width: 350px;
+    min-height: 400px;
+    display: block;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+
+    @include respond-to(sm) {
+      max-width: none;
+    }
+
+    &::before {
+      padding-top: 130%;
+      display: block;
+      content: '';
+    }
+  }
+
+  &__people-text {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+
+    h3 {
+      margin-top: auto;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+  }
+
+  &__text-wrap {
+    margin: 0 auto;
+    margin-bottom: 10px;
+    max-width: 730px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    @include respond-to(sm) {
+      margin-bottom: 50px;
+    }
+
+    h2 {
+      color: #336699;
+      margin-bottom: 25px;
+    }
+
+    p {
+      margin-bottom: 35px;
+    }
+  }
+
+  >.btn-big {
+    @include respond-to(md) {
+      margin-left: auto;
+      width: 50%;
+    }
+  }
+}

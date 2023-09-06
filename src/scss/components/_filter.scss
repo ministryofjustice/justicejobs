@@ -1,0 +1,48 @@
+.filter {
+    margin: 0 10px;
+    padding: 30px;
+    box-shadow: 0 8px 33px rgba(47, 47, 47, 0.17);
+    background-color: #ffffff;
+    @include respond-to(md) {
+        max-width: 270px;
+    }
+
+    legend {
+        margin-bottom: 30px;
+    }
+
+    .heading--sm {
+        color: $mid-blue;
+    }
+    &__reset {
+        font-size: 1.4rem;
+        color: #000;
+        border: none;
+        background: none;
+        cursor: pointer;
+        margin-right: 20px;
+    }
+    &__label {
+        margin-bottom: 12px;
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+    &__fieldset {
+        border: 0;
+        margin: 0;
+        padding: 0;
+    }
+    fieldset {
+        display: flex;
+        flex-direction: column;
+    }
+    form>fieldset>.input {
+        margin-bottom: 15px;
+    }
+    .dropdown {
+        margin-bottom: 15px;
+    }
+    .btn {
+        margin: 40px auto 0 auto;
+    }
+}

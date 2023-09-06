@@ -1,0 +1,182 @@
+/**
+ * This stylesheet is intended for use on error pages
+ */
+
+body {
+    font: normal 1.8rem/1.5 Barlow, Arial, sans-serif
+}
+
+button, input {
+    font-family: Barlow, Arial, sans-serif
+}
+
+.heading--lg {
+    font-weight: 700;
+    line-height: .9;
+    color: #000;
+    font-size: 5rem;
+    letter-spacing: .43px
+}
+
+@media (min-width: 768px) {
+.heading--lg {
+    letter-spacing: .64px;
+    font-size: 7.4rem
+}
+}
+
+.heading--md {
+    font-size: 2.6rem;
+    font-weight: 700;
+    letter-spacing: .31px;
+    line-height: 1.2;
+    color: #000
+}
+
+@media (min-width: 768px) {
+.heading--md {
+    font-size: 3.6rem
+}
+}
+
+.heading--sm {
+    font-size: 2.6rem;
+    font-weight: 600;
+    line-height: 1.15;
+    color: #000
+}
+
+.heading--sm-text {
+    font-size: 1.8rem
+}
+
+.heading--xs {
+    font-size: 1.4rem;
+    letter-spacing: .12px;
+    line-height: 1.1
+}
+
+.heading--xs, .heading--xxs {
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase
+}
+
+.heading--xxs {
+    font-size: 1.2rem;
+    letter-spacing: .76px;
+    line-height: 1
+}
+
+.heading--body {
+    color: #020202;
+    font-size: 2.2rem;
+    line-height: 1.53;
+    letter-spacing: .19px
+}
+
+.heading--carousel {
+    color: #fff;
+    font-size: 2.6rem;
+    font-weight: 700;
+    letter-spacing: .39px;
+    line-height: 1.1
+}
+
+.quote-copy {
+    color: #000;
+    font-size: 2.6rem;
+    letter-spacing: .23px;
+    line-height: 1.33
+}
+
+@media (min-width: 768px) {
+.quote-copy {
+    letter-spacing: .31px;
+    font-size: 3.6rem
+}
+}
+
+html {
+    font-size: 62.5%
+}
+
+body {
+    font-family: Barlow, Arial, sans-serif;
+    font-size: 1.4rem;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    text-size-adjust: none;
+    background-color: #d9d9d9;
+    background-position: top;
+    color: #020202;
+    margin: 0
+}
+
+@media (min-width: 1024px) {
+body {
+    font-size: 1.9rem
+}
+}
+
+a {
+    color: #369
+}
+
+header {
+    background: #020202
+}
+
+header .header-inside {
+    padding: 24px 0 19px;
+    margin: 0 auto;
+    max-width: 90%
+}
+
+@media (min-width: 768px) {
+header .header-inside {
+    max-width: 80%
+}
+}
+
+@media (min-width: 1024px) {
+header .header-inside {
+    max-width: 60rem
+}
+}
+
+header .screen-reader-text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    -webkit-clip-path: inset(50%);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute !important;
+    width: 1px;
+    word-wrap: normal !important
+}
+
+article {
+    padding: 3rem 0;
+    margin: 0 auto;
+    max-width: 90%
+}
+
+@media (min-width: 768px) {
+article {
+    max-width: 80%
+}
+}
+
+@media (min-width: 1024px) {
+article {
+    max-width: 60rem
+}
+}
+
+h1, li, p {
+    margin: 0 0 .65em
+}

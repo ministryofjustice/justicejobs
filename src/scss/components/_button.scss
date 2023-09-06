@@ -1,0 +1,368 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the button component.
+// -----------------------------------------------------------------------------
+.btn {
+    padding: 14px 30px;
+    height: 20px;
+    min-height: 50px;
+    min-width: 188px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 0.16px;
+    line-height: 1;
+    text-align: center;
+    border-radius: 3px;
+    border: 1px solid $light-green;
+    background-color: $light-green;
+    text-transform: uppercase;
+    cursor: pointer;
+    @include transition(opacity);
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: $light-green;
+        background: transparent;
+    }
+
+    &--bw {
+        color: #000;
+        background: #fff;
+        border: 1px solid white;
+        @include transition(all);
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: #fff;
+            background: black;
+        }
+
+        &:focus {
+            color: #000;
+            background: $focus-orange;
+        }
+    }
+
+    &--blue {
+        background: $dark-blue;
+        color: #fff;
+        border: 1px solid $dark-blue;
+        box-shadow: 0 17px 15px -5px rgba($dark-blue, 0.3);
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: #000;
+            border: 2px solid black;
+        }
+
+        &:focus {
+            background: $focus-orange;
+        }
+    }
+
+    &--dark-blue {
+        background: $even-darker-blue;
+        color: #fff;
+        border: 1px solid $even-darker-blue;
+        box-shadow: 0 17px 15px -5px rgba($even-darker-blue, 0.3);
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: #000;
+            border: 2px solid black;
+        }
+
+        &:focus {
+            background: $focus-orange;
+        }
+    }
+
+    &--green {
+        background: $light-green;
+        color: #fff;
+        border: 1px solid $light-green;
+        box-shadow: 0 17px 15px -5px rgba($light-green, 0.3);
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: $light-green;
+        }
+    }
+
+    &--full {
+        width: 100%;
+    }
+
+    &--small {
+        padding: 6px 12px;
+        font-size: 1.5rem;
+        font-weight: 600;
+        letter-spacing: 0.13px;
+        min-width: 80px;
+        min-height: 32px;
+    }
+}
+
+.btn-secondary {
+    display: flex;
+    align-items: center;
+    color: #000000;
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12px;
+    line-height: 1;
+    background: none;
+    border: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    cursor: pointer;
+    @include transition(opacity);
+
+    svg {
+        margin-left: 11px;
+        height: 15px;
+        width: 10px;
+        fill: #000;
+        margin-top: 3px;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+        opacity: 0.7;
+    }
+
+    &--light {
+        color: #fff;
+
+        svg {
+            fill: #fff;
+        }
+    }
+}
+
+.btn-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: none;
+    cursor: pointer;
+
+    svg {
+        margin-left: 5px;
+        width: 12px;
+        height: 15px;
+        fill: $light-blue;
+    }
+
+    @include respond-to(sm) {
+        width: 70px;
+        height: 70px;
+        svg {
+            margin-left: 7px;
+            width: 21px;
+            height: 25px;
+        }
+    }
+
+    &--sm {
+        @include respond-to(sm) {
+            width: 40px;
+            height: 40px;
+            svg {
+                margin-left: 5px;
+                width: 12px;
+                height: 15px;
+                fill: $light-blue;
+            }
+        }
+    }
+}
+
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 0.8;
+    color: #000;
+    border: 2px solid transparent;
+    padding: 4px;
+
+    &:hover,
+    &:focus,
+    &:active {
+        border: 2px solid #000;
+    }
+
+    &:focus {
+        background: $focus-orange;
+    }
+
+    svg {
+        margin-right: 8px;
+        width: 8px;
+        height: 13px;
+        transform: rotate(180deg);
+        //fill: #adadad;
+        fill: #000;
+    }
+
+    &--blue {
+        color: $mid-blue;
+
+        svg {
+            fill: $mid-blue;
+        }
+    }
+
+}
+
+.agency__text > .btn-back--agency {
+    position: relative;
+    top: -40px;
+    left: -15px;
+}
+
+.btn-reset {
+    font-size: inherit;
+    color: $mid-blue;
+    background: none;
+    cursor: pointer;
+    text-decoration: underline;
+    border: 2px solid transparent;
+    padding: 2px;
+
+    svg {
+        margin-right: 8px;
+        width: 8px;
+        height: 13px;
+        transform: rotate(180deg);
+        fill: #000;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+        border: 2px solid #000;
+    }
+
+    &:focus {
+        background: $focus-orange;
+    }
+
+    &--blue {
+        color: $mid-blue;
+
+        svg {
+            fill: $mid-blue;
+        }
+    }
+
+    &-button-contain {
+        position: relative;
+        min-height: 30px;
+
+        .btn-reset {
+            color: #000;
+            font-size: 1.4rem;
+            margin: 20px 8px;
+            position: absolute;
+            right: 0;
+            text-decoration: none;
+        }
+    }
+}
+
+.btn-big {
+    padding: 25px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: 0.12px;
+    background: $light-blue;
+    border: none;
+
+    svg {
+        fill: #fff;
+    }
+
+    &--green {
+        background: $light-green;
+    }
+}
+
+.btn-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    svg {
+        width: 33px;
+        height: 33px;
+        fill: #fff;
+    }
+
+    @include respond-to(sm) {
+        right: -40px;
+    }
+
+    &:hover {
+        svg {
+            fill: #dedede;
+        }
+    }
+    &:focus {
+        outline: 3px solid $focus-orange;
+        svg {
+            fill: $focus-orange;
+        }
+    }
+}
+
+.btn-plus {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    @include transition;
+
+    svg {
+        fill: $darker-blue;
+    }
+}
+
+.inner_btn-plus {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    @include transition;
+
+    svg {
+        fill: $darker-blue;
+    }
+}
