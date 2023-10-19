@@ -284,51 +284,17 @@ function jobs_import_override()
     $query = get_query_var('jobs_process');
     if (is_user_logged_in() && current_user_can('administrator')) {
         switch ($query) {
-            case 'pull-jobs':
-                save_jobs_xml_file();
-                jobs_import_override_complete();
-                break;
             case 'import-jobs':
-                import_jobs_from_xml();
-                jobs_import_override_complete();
+                jj_import_from_parser();
                 break;
             case 'delete-jobs':
                 deleteJobs();
-                jobs_import_override_complete();
-                break;
-            case 'pull-jobs-force':
-                save_jobs_xml_file(true);
-                jobs_import_override_complete();
-                break;
-            case 'refresh-feed':
-                save_jobs_xml_file(true);
-                import_jobs_from_xml();
-                jobs_import_override_complete();
                 break;
         }
-    }
-
-    if (!empty($query)) {
-        jobs_import_override_complete(true);
     }
 }
 
 add_action('wp', 'jobs_import_override', 1);
-
-/**
- * When a manual import override process has completed
- * Handles white-page script output correctly in production
- * @param $redirect bool
- */
-function jobs_import_override_complete($redirect = false)
-{
-    if (WP_ENV === 'production' || $redirect === true) {
-        if (wp_redirect('/', 301)) {
-            exit;
-        }
-    }
-    die();
-}
 
 if (!function_exists('deleteJobs')) {
     function deleteJobs()
@@ -594,4 +560,3 @@ $update_cron = (isset($_GET["cron"]) && $_GET["cron"]=="update") ? true : false;
 if ($update_cron) import_jobs_from_xml();
 
 
-//add_action( 'init', 'jj_import_from_parser', 20 );
