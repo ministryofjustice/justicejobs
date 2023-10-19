@@ -104,6 +104,7 @@ function enqueue_justice_jobs_scripts()
 
     $local_attr = [
         'root_url' => get_template_directory_uri(),
+        'site_url' => get_site_url() . '/',
         'ajaxurl' => admin_url('admin-ajax.php')
     ];
 

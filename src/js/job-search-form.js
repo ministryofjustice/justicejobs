@@ -45,7 +45,7 @@ jQuery(document).ready(function ($) {
             .removeAttr('selected');
         $('#radius').val('10');
 
-        window.location = window.location.origin + '?s=';
+        window.location = justice.site_url + '?s=';
     });
 
     // take control of the radius select box
@@ -122,7 +122,7 @@ jQuery(document).ready(function ($) {
             str = '?s=' + keywordLive + roleTypeLive + salaryRangeLive + workingPatternLive;
             localStorage.setItem("currentSearch", str);
 
-            window.location = window.location.origin + str;
+            window.location = justice.site_url + str;
         }
     });
 
@@ -146,7 +146,7 @@ jQuery(document).ready(function ($) {
             getJSON(thisLocation, thisRadius);
         } else {
             str = '?s=' + keywordLive;
-            window.location = window.location.origin + str;
+            window.location = justice.site_url + str;
         }
     });
 
@@ -194,6 +194,6 @@ jQuery(document).ready(function ($) {
         locationsRelevantLive = '&locations-relevant=' + locationsRelevant;
 
         str = str + locationsRelevantLive;
-        window.location = window.location.origin + str;
+        window.location = justice.site_url + str;
     }
 });
