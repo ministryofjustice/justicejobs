@@ -77,7 +77,7 @@ function salary_range_custom_taxonomy() {
 	register_taxonomy( 'salary_range', array( 'job' ), $args );
 
 }
-add_action( 'init', 'salary_range_custom_taxonomy', 0 );
+//add_action( 'init', 'salary_range_custom_taxonomy', 0 );
 
 
 // Register Working Pattern Custom Taxonomy
