@@ -241,20 +241,10 @@ require 'inc/emergency-banner-settings.php';
 /**
  * Load Jobs Handler file
  */
+require 'inc/jobs-handler/import-from-parser.php';
 require 'inc/jobs-handler/save-jobs-xmlfile.php';
 require 'inc/jobs-handler/add-edit-jobs.php';
 require 'inc/jobs-handler/job-search.php';
-
-// Create cron hook and schedule event
-add_action('save_xml_cron_hook', 'save_jobs_xml_file');
-if (!wp_next_scheduled('save_xml_cron_hook')) {
-    wp_schedule_event(time(), 'hourly', 'save_xml_cron_hook');
-}
-
-add_action('update_jobs_cron_hook', 'import_jobs_from_xml');
-if (!wp_next_scheduled('update_jobs_cron_hook')) {
-    wp_schedule_event(time() + 900, 'hourly', 'update_jobs_cron_hook');
-}
 
 /**
  * Custom functions that act independently of the theme templates.
@@ -601,3 +591,6 @@ add_action('admin_menu', 'remove_from_admin_menu');
 $update_cron = (isset($_GET["cron"]) && $_GET["cron"]=="update") ? true : false;
 
 if ($update_cron) import_jobs_from_xml();
+
+
+//add_action( 'init', 'jj_import_from_parser', 20 );
