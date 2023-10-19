@@ -500,7 +500,7 @@ if ($_location && empty($_locations_relevant)) {
                                 <?php
                                 $jj_view_label = strstr(get_the_title(), ' &#8211;', true);
                                 ?>
-                                <a href="<?php the_permalink(); ?>"
+                                <a href="<?php the_field('application_link'); ?>"
                                    class="btn btn--blue btn--small"
                                    aria-label="View the job description for <?= $jj_view_label ?: get_the_title() ?>">View</a>
                             </td>
