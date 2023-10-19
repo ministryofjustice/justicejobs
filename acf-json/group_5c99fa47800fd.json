@@ -1,0 +1,342 @@
+{
+    "key": "group_5c99fa47800fd",
+    "title": "Agency main content",
+    "fields": [
+        {
+            "key": "field_5ca7326c056bf",
+            "label": "Hero and body content",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5c9e11729a332",
+            "label": "Agency Colour",
+            "name": "agency_colour",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": ""
+        },
+        {
+            "key": "field_5c99fa5b3b7d9",
+            "label": "Agency Logo White",
+            "name": "agency_logo_white",
+            "type": "image",
+            "instructions": "Add agency logo (to appear in About Us page)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5c9b7f9ced0ad",
+            "label": "Agency Logo Black",
+            "name": "agency_logo_black",
+            "type": "image",
+            "instructions": "Add agency logo (to appear in the agency page)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5c9b7bb57aa79",
+            "label": "Agency Hero Desktop Image",
+            "name": "agency_hero_desktop_image",
+            "type": "image",
+            "instructions": "Add hero image for desktop",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5c9b7bec7aa7a",
+            "label": "Agency Hero Mobile Image",
+            "name": "agency_hero_mobile_image",
+            "type": "image",
+            "instructions": "Add hero image for mobile devices",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5cab387208763",
+            "label": "Agency Hero Image Description",
+            "name": "agency_hero_image_description",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5c9b7e4089f7b",
+            "label": "Agency Content",
+            "name": "agency_content",
+            "type": "wysiwyg",
+            "instructions": "Add text",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5cb49369ef271",
+            "label": "Add Link",
+            "name": "add_link",
+            "type": "true_false",
+            "instructions": "Check if you would like to add a Find-out-more Link at the bottom",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5c9b8986600a9",
+            "label": "Find-out-more Link",
+            "name": "find-out-more_link",
+            "type": "link",
+            "instructions": "There is the option of linking to existing content or entering an external URL. \r\nIf you want the link text on the page to be \"Find out more about us\", add only \"us\" in the Link Text field",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5cb49369ef271",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_5ca1d969285ef",
+            "label": "Carousel content",
+            "name": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "left",
+            "endpoint": 0
+        },
+        {
+            "key": "field_5ca1da867dff7",
+            "label": "Description",
+            "name": "homepage_description",
+            "type": "textarea",
+            "instructions": "Add description to appear on the agency carousel",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_5ca1dab07dff8",
+            "label": "Quote",
+            "name": "homepage_quote",
+            "type": "textarea",
+            "instructions": "Add quote text to appear in the right column of the carousel",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 5,
+            "new_lines": ""
+        },
+        {
+            "key": "field_5ca1db0f7dff9",
+            "label": "Author",
+            "name": "homepage_quote_author",
+            "type": "text",
+            "instructions": "Add name and surname of the quote author",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5ca1db427dffa",
+            "label": "Job title",
+            "name": "homepage_quote_author_position",
+            "type": "text",
+            "instructions": "Add the author's job title",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5e4280a261217",
+            "label": "Link",
+            "name": "homepage_link_text",
+            "type": "text",
+            "instructions": "Change the agency link from the default of 'Find out more'",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "Find out more",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "agency"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1581695932
+}

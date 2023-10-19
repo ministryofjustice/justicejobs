@@ -1,0 +1,47 @@
+{
+    "key": "group_5cc07a9c8d47c",
+    "title": "Jobs General Settings",
+    "fields": [
+        {
+            "key": "field_5cc07aae06e48",
+            "label": "Jobs Hero Image",
+            "name": "jobs_hero_image",
+            "type": "clone",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": [
+                "field_5c9b54f0f2c43",
+                "field_5c9b577f515b0",
+                "field_5cab38404bee4"
+            ],
+            "display": "group",
+            "layout": "block",
+            "prefix_label": 0,
+            "prefix_name": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1573138671
+}
