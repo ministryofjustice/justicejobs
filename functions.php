@@ -229,6 +229,12 @@ function jj_add_cron_interval($schedules)
     return $schedules;
 }
 
+if (!wp_next_scheduled('jj_import_jobs_cron_hook')) {
+    wp_schedule_event(time(), 'fifteen_minutes', 'jj_import_jobs_cron_hook');
+}
+
+add_action('jj_import_jobs_cron_hook', 'jj_import_from_parser');
+
 // Add Options page
 if (function_exists('acf_add_options_page')) {
     acf_add_options_page();
@@ -394,70 +400,6 @@ if (!function_exists('moj_at_glance_cpt_display')) {
 
 add_action('dashboard_glance_items', 'moj_at_glance_cpt_display');
 
-/**
- *
- */
-function jobs_cron_page_create()
-{
-    $page_title = 'Jobs CRON Settings';
-    $menu_title = 'Jobs CRON';
-    $capability = 'manage_options';
-    $menu_slug = 'jobs-cron-switch';
-    $function = 'jobs_cron_page_display';
-    $icon_url = '';
-    $position = 24;
-
-    add_options_page($page_title, $menu_title, $capability, $menu_slug, $function, $position);
-}
-
-add_action('admin_menu', 'jobs_cron_page_create');
-
-function jobs_cron_page_display()
-{
-    if (!current_user_can('manage_options')) {
-        wp_die('Sorry, you cannot access this page.');
-    }
-
-    $send_mail = false;
-    $subject = "[Justice Jobs] Job CRON: ";
-    $message = "Simple notification:\n\n";
-    if (isset($_POST['jobs_cron_switch_input'])) {
-        if (update_option('jobs-cron-switch-input', $_POST['jobs_cron_switch_input'])) {
-            $send_mail = true;
-            $subject .= 'STARTED';
-            $message .= "The Jobs CRON has been restarted.";
-        }
-    } else {
-        if (isset($_POST['jobs_cron_checker'])) {
-            if (update_option('jobs-cron-switch-input', '0')) {
-                $send_mail = true;
-                $subject .= 'DEACTIVATED';
-                $message .= "A request has been authorised to stop the Job CRON operation.\n\n" . admin_url('options-general.php?page=jobs-cron-switch');
-            }
-        }
-    }
-
-    if ($send_mail === true) {
-        wp_mail(get_option('admin_email'), $subject, $message);
-    }
-
-    include('inc/job-cron-options-page.php');
-}
-
-function jobs_cron_display_notice($state)
-{
-    $message = 'The Jobs CRON is currently operational.';
-    $class = 'success';
-
-    if ($state !== '1') {
-        $message = 'The current setting is preventing new jobs from being imported.<br>... please consider activating the CRON below.';
-        $class = 'error';
-    }
-
-    return '<div class="notice notice-' . $class . '" style="display:inline-block;margin:10px 0 28px">
-                <p><strong>' . $message . '</strong></p>
-            </div>';
-}
 
 /**
  * There are only three variables needed to operate this function
@@ -475,62 +417,6 @@ function jj_simple_mail($email, $args)
         return null;
     }
     return wp_mail($email, $args[0], $args[1]);
-}
-
-/**
- * A data holder for jobs CRON functions
- * Numbers represent hours in a 24 hour clock
- * @return array
- */
-function jj_scheduled_hours(): array
-{
-    return [
-        6,  // 6am
-        12, // 12pm
-        18  // 6pm
-    ];
-}
-
-/**
- * Returns true when the current hour is listed in jj_scheduled_hours()
- *
- * requires the scheduled time is every 30 minutes
- *
- * @param $hour int
- * @return bool
- * @uses jj_scheduled_hours()
- */
-function inside_schedule_window($hour = null)
-{
-    $time = $hour ?? (int)date("H");
-    $windows = jj_scheduled_hours();
-    if (in_array($time, $windows)) {
-        return true;
-    }
-
-    return false;
-}
-
-/**
- * Determine if time is more than 2 hours from a schedule point but no greater than the next scheduled time
- *
- * @return bool
- * @uses jj_scheduled_hours()
- */
-function is_2_hours_past_window()
-{
-    $windows = jj_scheduled_hours();
-
-    // add 2 hours to time
-    $time = (int)date("H") + 2;
-    foreach ($windows as $key => $window) {
-        // store next hour unless the last hour in the array
-        $mod_key = ($key === count($windows) - 1 ? 0 : $key + 1);
-        if ($time >= $window && $time < $windows[$mod_key]) {
-            return true;
-        }
-    }
-    return false;
 }
 
 //Shows shortcut link button when using classic editor
