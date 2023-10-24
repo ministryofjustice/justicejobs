@@ -1,4 +1,7 @@
 <?php
+
+require_once(ABSPATH . "wp-load.php");
+
 if (!function_exists('jj_import_from_parser')) {
 
     function jj_import_from_parser()
@@ -256,6 +259,12 @@ function jj_update_job_details($jobPostID, $job){
             }
 
             if(array_key_exists($jsonKey, $job) && !empty($job[$jsonKey])){
+
+                if($field['metaKey'] == 'salary_min' || $field['metaKey'] == 'salary_max' || $field['metaKey'] == 'salary_london'){
+                    if(!is_numeric($job[$jsonKey])){
+                        $job[$jsonKey] = 0;
+                    }
+                }
                 update_post_meta($jobPostID, $field['metaKey'], $job[$jsonKey]);
             }
             else {
