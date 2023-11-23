@@ -1,2 +1,2 @@
 # justicejobs
-WordPress theme for Justice Jobs website
+WordPress theme for Justice Jobs website.
