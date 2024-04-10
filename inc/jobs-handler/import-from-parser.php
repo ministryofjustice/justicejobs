@@ -37,10 +37,11 @@ if (!function_exists('jj_import_from_parser')) {
             
             $importResult = jj_import_jobs($feedDataArray['objects']);
     
-            if(!$importResult){
+            if(!$importResult['success']){
                 return false;
             }
-    
+
+            jj_delete_old_jobs($importResult['activeJobs']);
             return true;
         }
 
@@ -54,6 +55,8 @@ if (!function_exists('jj_import_jobs')) {
 
     function jj_import_jobs($jobsArray)
     {
+        $result = ["success" => false, "activeJobs" => []];
+
         $activeJobs = [];
         $maxItems = false;
     
@@ -72,6 +75,13 @@ if (!function_exists('jj_import_jobs')) {
             $activeJobs[] = $jobPostID;
             $count++;
         }
+
+        if(count($activeJobs) > 0){
+            $result['success'] = true;
+            $result['activeJobs'] = $activeJobs;
+        }
+
+        return $result;
     }
 }
 
@@ -303,6 +313,15 @@ function jj_update_job_details($jobPostID, $job){
             else {
                 wp_set_object_terms($jobPostID, false, $field['taxKey']);
             }
+        }
+    }
+}
+
+function jj_delete_old_jobs($active_jobs){
+    if (count($active_jobs) > 0) {
+        $all_posts = get_posts(array('post_type' => 'job', 'post__not_in' => $active_jobs, 'numberposts' => -1));
+        foreach ($all_posts as $each_post) {
+            wp_delete_post($each_post->ID, true);
         }
     }
 }
