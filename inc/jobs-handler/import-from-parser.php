@@ -58,7 +58,7 @@ if (!function_exists('jj_import_jobs')) {
         $result = ["success" => false, "activeJobs" => []];
 
         $activeJobs = [];
-        $maxItems = false;
+        $maxItems = 10;
     
         $count = 0;
         foreach ($jobsArray as $job) {
@@ -248,6 +248,11 @@ function jj_update_job_details($jobPostID, $job){
             'type' => 'tax',
             'jsonKey' => 'addresses',
             'taxKey' => 'job_location',
+        ],
+        [
+            'type' => 'tax',
+            'jsonKey' => 'regions',
+            'taxKey' => 'job_region',
         ]
     ];
 

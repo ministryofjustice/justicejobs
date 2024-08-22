@@ -5,8 +5,7 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 $_role_type = get_query_var('role-type');
 $_salary_min = get_query_var('salary-min');
 $_working_pattern = get_query_var('working-pattern');
-$_location = get_query_var('location');
-$_radius = (int)trim(get_query_var('radius'));
+$_region = get_query_var('region');
 $_locations_relevant = get_query_var('locations-relevant');
 $_locations_relevant_array = explode(',', $_locations_relevant);
 $_locations_relevant_array_pop = array_pop($_locations_relevant_array);
@@ -87,20 +86,28 @@ if ($_location && empty($_locations_relevant)) {
                         <?= $options['list'] ?>
                     </select>
                 </div>
-                <span class="filter__label">Location</span>
-                <label for="location" class="screen-reader-text">Location</label>
-                <input id="location" aria-label="Location" name="location" type="text" class="input"
-                       placeholder="City / Postcode" value="<?= sanitize_text_field($_location); ?>"/>
-                <div class="select-list" data-miles="<?= $_radius ?>">
-                    <label for="radius" class="screen-reader-text">Radius (in miles)</label>
-                    <select disabled class="select" id="radius"
-                            aria-label="Radius (in miles)" <?= ($_radius ? ' title="' . $_radius . ' miles"' : '') ?>>
-                        <option value="0" disabled selected>Radius (in miles)</option>
-                        <option value="5">5 Miles</option>
-                        <option value="10">10 Miles</option>
-                        <option value="25">25 Miles</option>
-                        <option value="50">50 Miles</option>
-                        <option value="100">100 miles</option>
+                <span class="filter__label">Region</span>
+                <div class="select-list">
+                    <?php
+                    
+                    $national_term_ID = 0;
+                    foreach (get_terms(array( 'taxonomy' => 'job_region')) as $region) {
+                        if (strtoupper($region->name) == "NATIONAL") {
+                            $national_term_ID = $region->term_id;
+                            break;
+                        }
+                    }
+                    $terms = get_terms(array(
+                        'taxonomy' => 'job_region',
+                        'hide_empty' => true,
+                        'exclude' => $national_term_ID
+                    ));
+
+                    $options = jj_select_options($_region, 'region');
+
+                    ?>
+                    <select class="select" id="region" <?= $options['title'] ?>>
+                        <?= $options['list'] ?>
                     </select>
                 </div>
                 <span class="filter__label">Salary</span>
@@ -147,212 +154,54 @@ if ($_location && empty($_locations_relevant)) {
         <header>
             <?php
 
-            if (!empty($_role_type) && !empty($_working_pattern) && !empty($_locations_relevant)) {
-                $args = array(
-                    'post_type' => 'job',
-                    'posts_per_page' => 10,
-                    'paged' => $paged,
-                    's' => $search_query,
-                    'tax_query' => array(
-                        'relation' => 'AND',
-                        array(
-                            'taxonomy' => 'role_type',
-                            'field' => 'slug',
-                            'terms' => $_role_type,
-                        ),
-                        array(
-                            'taxonomy' => 'working_pattern',
-                            'field' => 'slug',
-                            'terms' => $_working_pattern,
-                        ),
-                        array(
-                            'taxonomy' => 'job_location',
-                            'field' => 'term_id',
-                            'terms' => $_locations_relevant_array,
-                            'operator' => 'IN',
-                        )
-                    ),
+            $args = array(
+                'post_type' => 'job',
+                'posts_per_page' => 10,
+                'paged' => $paged,
+                's' => $search_query
+            );
+
+            $tax_query = [];
+
+            if (!empty($_role_type)) {
+                $tax_query[] =  array(
+                    'taxonomy' => 'role_type',
+                    'field' => 'slug',
+                    'terms' => $_role_type,
                 );
-            } elseif (!empty($_role_type) && !empty($_locations_relevant)) {
-                $args = array(
-                    'post_type' => 'job',
-                    'posts_per_page' => 10,
-                    'paged' => $paged,
-                    's' => $search_query,
-                    'tax_query' => array(
-                        'relation' => 'AND',
-                        array(
-                            'taxonomy' => 'role_type',
-                            'field' => 'slug',
-                            'terms' => $_role_type,
-                        ),
-                        array(
-                            'taxonomy' => 'job_location',
-                            'field' => 'term_id',
-                            'terms' => $_locations_relevant_array,
-                            'operator' => 'IN',
-                        )
-                    ),
+            } 
+
+            if (!empty($_region)) {
+
+                $region_terms = [];
+                $region_terms[] = $_region;
+
+                if ($national_term_ID > 0) {
+                    $region_terms[] = 'national';
+                }
+
+                $tax_query[] =  array(
+                    'taxonomy' => 'job_region',
+                    'field' => 'slug',
+                    'terms' => $region_terms,
                 );
-            } elseif (!empty($_role_type) && !empty($_working_pattern) && !empty($_locations_relevant)) {
-                $args = array(
-                    'post_type' => 'job',
-                    'posts_per_page' => 10,
-                    'paged' => $paged,
-                    's' => $search_query,
-                    'tax_query' => array(
-                        'relation' => 'AND',
-                        array(
-                            'taxonomy' => 'role_type',
-                            'field' => 'slug',
-                            'terms' => $_role_type,
-                        ),
-                        array(
-                            'taxonomy' => 'working_pattern',
-                            'field' => 'slug',
-                            'terms' => $_working_pattern,
-                        ),
-                        array(
-                            'taxonomy' => 'job_location',
-                            'field' => 'term_id',
-                            'terms' => $_locations_relevant_array,
-                            'operator' => 'IN',
-                        )
-                    ),
+            } 
+
+            if (!empty($_working_pattern)) {
+                $tax_query[] =  array(
+                    'taxonomy' => 'working_pattern',
+                    'field' => 'slug',
+                    'terms' => $_working_pattern,
                 );
-            } elseif (!empty($_working_pattern) && !empty($_locations_relevant)) {
-                $args = array(
-                    'post_type' => 'job',
-                    'posts_per_page' => 10,
-                    'paged' => $paged,
-                    's' => $search_query,
-                    'tax_query' => array(
-                        'relation' => 'AND',
-                        array(
-                            'taxonomy' => 'working_pattern',
-                            'field' => 'slug',
-                            'terms' => $_working_pattern,
-                        ),
-                        array(
-                            'taxonomy' => 'job_location',
-                            'field' => 'term_id',
-                            'terms' => $_locations_relevant_array,
-                            'operator' => 'IN',
-                        )
-                    ),
-                );
-            } elseif (!empty($_role_type) && !empty($_working_pattern)) {
-                $args = array(
-                    'post_type' => 'job',
-                    'posts_per_page' => 10,
-                    'paged' => $paged,
-                    's' => $search_query,
-                    'tax_query' => array(
-                        'relation' => 'AND',
-                        array(
-                            'taxonomy' => 'role_type',
-                            'field' => 'slug',
-                            'terms' => $_role_type,
-                        ),
-                        array(
-                            'taxonomy' => 'working_pattern',
-                            'field' => 'slug',
-                            'terms' => $_working_pattern,
-                        ),
-                    ),
-                );
-            } elseif (!empty($_role_type) && !empty($_locations_relevant)) {
-                $args = array(
-                    'post_type' => 'job',
-                    'posts_per_page' => 10,
-                    'paged' => $paged,
-                    's' => $search_query,
-                    'tax_query' => array(
-                        'relation' => 'AND',
-                        array(
-                            'taxonomy' => 'role_type',
-                            'field' => 'slug',
-                            'terms' => $_role_type,
-                        ),
-                        array(
-                            'taxonomy' => 'job_location',
-                            'field' => 'term_id',
-                            'terms' => $_locations_relevant_array,
-                            'operator' => 'IN',
-                        )
-                    ),
-                );
-            } elseif (!empty($_working_pattern) && !empty($_locations_relevant)) {
-                $args = array(
-                    'post_type' => 'job',
-                    'posts_per_page' => 10,
-                    'paged' => $paged,
-                    's' => $search_query,
-                    'tax_query' => array(
-                        'relation' => 'AND',
-                        array(
-                            'taxonomy' => 'working_pattern',
-                            'field' => 'slug',
-                            'terms' => $_working_pattern,
-                        ),
-                        array(
-                            'taxonomy' => 'job_location',
-                            'field' => 'term_id',
-                            'terms' => $_locations_relevant_array,
-                            'operator' => 'IN',
-                        )
-                    ),
-                );
-            } elseif (!empty($_locations_relevant)) {
-                $args = array(
-                    'post_type' => 'job',
-                    'posts_per_page' => 10,
-                    'paged' => $paged,
-                    's' => $search_query,
-                    'tax_query' => array(
-                        array(
-                            'taxonomy' => 'job_location',
-                            'field' => 'term_id',
-                            'terms' => $_locations_relevant_array,
-                            'operator' => 'IN',
-                        ),
-                    ),
-                );
-            } elseif (!empty($_role_type)) {
-                $args = array(
-                    'post_type' => 'job',
-                    'posts_per_page' => 10,
-                    'paged' => $paged,
-                    's' => $search_query,
-                    'tax_query' => array(
-                        array(
-                            'taxonomy' => 'role_type',
-                            'field' => 'slug',
-                            'terms' => $_role_type,
-                        ),
-                    ),
-                );
-            }  elseif (!empty($_working_pattern)) {
-                $args = array(
-                    'post_type' => 'job',
-                    'posts_per_page' => 10,
-                    'paged' => $paged,
-                    's' => $search_query,
-                    'tax_query' => array(
-                        array(
-                            'taxonomy' => 'working_pattern',
-                            'field' => 'slug',
-                            'terms' => $_working_pattern,
-                        ),
-                    ),
-                );
-            } else {
-                $args = array(
-                    'post_type' => 'job',
-                    'posts_per_page' => 10,
-                    'paged' => $paged,
-                    's' => $search_query
-                );
+            } 
+
+            if (!empty($tax_query)) {
+
+                if(count($tax_query) > 1){
+                    $tax_query['relation'] = 'AND';
+                }
+
+                $args['tax_query'] = $tax_query;
             }
 
             if (!empty($_salary_min)) {
@@ -410,23 +259,6 @@ if ($_location && empty($_locations_relevant)) {
                 ?>
             </div>
 
-            <div class="search_contain__controls">
-                <p>VIEW BY</p>
-                <button class="search_contain__label search_contain__label--list" aria-pressed="true"
-                        aria-controls="jj-search-results-view">
-                    <span class="screen-reader-text">View search results as a </span> LIST
-                    <svg width="28" height="28">
-                        <use xlink:href="#icon-list"></use>
-                    </svg>
-                </button>
-                <button class="search_contain__label search_contain__label--map" aria-pressed="false"
-                        aria-controls="jj-search-results-view">
-                    <span class="screen-reader-text">View search results as a </span>MAP
-                    <svg width="17" height="24">
-                        <use xlink:href="#icon-marker"></use>
-                    </svg>
-                </button>
-            </div>
         </header>
 
         <div class="search_contain__container" id="js-hide-map">
