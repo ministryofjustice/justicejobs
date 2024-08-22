@@ -131,25 +131,21 @@ jQuery(document).ready(function ($) {
     $('#mini-search-form').on('submit', function (e) {
         e.preventDefault();
         var keyword = $(this).find("#keyword").val() || '',
-            thisLocation = $(this).find('#location').val() || '',
-            locationLive = '',
-            radiusLive,
-            keywordLive = '',
-            thisRadius = $(this).find('#radius').val() || 10;
+            region = $(this).find('#region').val() || '',
+            regionLive = '',
+            keywordLive = ''
 
         if (_hasString(keyword)) {
             keywordLive = keyword;
         }
 
-        if (_hasString(thisLocation)) {
-            locationLive = '&location=' + thisLocation;
-            radiusLive = '&radius=' + parseInt(thisRadius);
-            str = '?s=' + keywordLive + locationLive + radiusLive;
-            getJSON(thisLocation, thisRadius);
-        } else {
-            str = '?s=' + keywordLive;
-            window.location = justice.site_url + str;
-        }
+        if (_hasString(region)) {
+            regionLive = '&region=' + region;
+        } 
+
+        str = '?s=' + keywordLive + regionLive;
+        window.location = justice.site_url + str;
+    
     });
 
     function _hasString(string) {

@@ -62,9 +62,29 @@
                 </div>
                 <div class="row">
                     <span>in</span>
-                    <label for="location" class="screen-reader-text">Location</label>
-                    <input id="location" name="location" aria-label="Location" type="text" class="input"
-                           placeholder="City / Postcode"/>
+                    <label for="location" class="screen-reader-text">Region</label>
+                    <?php 
+                    
+                    $national_term_ID = 0;
+                    
+                    foreach (get_terms(array( 'taxonomy' => 'job_region')) as $region) {
+                        if (strtoupper($region->name) == "NATIONAL") {
+                            $national_term_ID = $region->term_id;
+                            break;
+                        }
+                    }
+                    $terms = get_terms(array(
+                        'taxonomy' => 'job_region',
+                        'hide_empty' => true,
+                        'exclude' => $national_term_ID
+                    ));
+
+                    $options = jj_select_options($_region, 'region');
+
+                    ?>
+                    <select class="select" id="region" <?= $options['title'] ?>>
+                        <?= $options['list'] ?>
+                    </select>
                 </div>
                 <button class="btn btn--dark-blue btn--full search-page-link ga-mini-home-form-button" type="submit">
                     Search
