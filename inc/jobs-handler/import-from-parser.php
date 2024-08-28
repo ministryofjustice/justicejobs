@@ -58,7 +58,7 @@ if (!function_exists('jj_import_jobs')) {
         $result = ["success" => false, "activeJobs" => []];
 
         $activeJobs = [];
-        $maxItems = 10;
+        $maxItems = false;
     
         $count = 0;
         foreach ($jobsArray as $job) {
