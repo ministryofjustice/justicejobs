@@ -75,20 +75,28 @@ Template Name: Search/Apply Template
                         <?= $options['list'] ?>
                     </select>
                 </div>
-                <span class="filter__label">Location</span>
-                <label for="location" class="screen-reader-text">Location</label>
-                <input id="location" aria-label="Location" name="location" type="text" class="input"
-                       placeholder="City / Postcode" value=""/>
-                <div class="select-list" data-miles="0">
-                    <label for="radius" class="screen-reader-text">Radius (in miles)</label>
-                    <select disabled class="select" id="radius"
-                            aria-label="Radius (in miles)">
-                        <option value="0" disabled selected>Radius (in miles)</option>
-                        <option value="5">5 Miles</option>
-                        <option value="10">10 Miles</option>
-                        <option value="25">25 Miles</option>
-                        <option value="50">50 Miles</option>
-                        <option value="100">100 miles</option>
+                <span class="filter__label">Region</span>
+                <div class="select-list">
+                    <?php
+                    
+                    $national_term_ID = 0;
+                    foreach (get_terms(array( 'taxonomy' => 'job_region')) as $region) {
+                        if (strtoupper($region->name) == "NATIONAL") {
+                            $national_term_ID = $region->term_id;
+                            break;
+                        }
+                    }
+                    $terms = get_terms(array(
+                        'taxonomy' => 'job_region',
+                        'hide_empty' => true,
+                        'exclude' => $national_term_ID
+                    ));
+
+                    $options = jj_select_options($_region, 'region');
+
+                    ?>
+                    <select class="select" id="region" <?= $options['title'] ?>>
+                        <?= $options['list'] ?>
                     </select>
                 </div>
                 <span class="filter__label">Salary</span>
@@ -173,25 +181,6 @@ Template Name: Search/Apply Template
                             'justicejobs') . __($job_query->max_num_pages) . '</span>'
                 ));
                 ?>
-            </div>
-
-
-            <div class="search_contain__controls">
-                <p>VIEW BY</p>
-                <button class="search_contain__label search_contain__label--list" aria-pressed="true"
-                        aria-controls="jj-search-results-view">
-                    <span class="screen-reader-text">View search results as a </span> LIST
-                    <svg width="28" height="28">
-                        <use xlink:href="#icon-list"></use>
-                    </svg>
-                </button>
-                <button class="search_contain__label search_contain__label--map" aria-pressed="false"
-                        aria-controls="jj-search-results-view">
-                    <span class="screen-reader-text">View search results as a </span>MAP
-                    <svg width="17" height="24">
-                        <use xlink:href="#icon-marker"></use>
-                    </svg>
-                </button>
             </div>
 
         </header>

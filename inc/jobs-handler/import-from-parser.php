@@ -248,6 +248,11 @@ function jj_update_job_details($jobPostID, $job){
             'type' => 'tax',
             'jsonKey' => 'addresses',
             'taxKey' => 'job_location',
+        ],
+        [
+            'type' => 'tax',
+            'jsonKey' => 'regions',
+            'taxKey' => 'job_region',
         ]
     ];
 

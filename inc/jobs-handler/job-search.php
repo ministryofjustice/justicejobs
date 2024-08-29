@@ -9,8 +9,7 @@ function job_search_register_query_vars( $vars ) {
     $vars[] = 'role-type';
     $vars[] = 'salary-min';
     $vars[] = 'working-pattern';
-    $vars[] = 'location';
-    $vars[] = 'radius';
+    $vars[] = 'region';
     $vars[] = 'locations-relevant';
 
 

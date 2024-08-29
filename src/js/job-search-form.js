@@ -69,15 +69,13 @@ jQuery(document).ready(function ($) {
             roleType = $(this).find('#role-type').val() || '',
             salaryRange = $(this).find('#salary-min').val() || '',
             workingPattern = $(this).find('#working-pattern').val() || '',
-            thisLocation = $(this).find('#location').val() || '',
-            thisRadius = parseInt($(this).find('#radius').val()) || 10;
+            region = $(this).find('#region').val() || ''
 
         var keywordLive = '',
             roleTypeLive = '',
             salaryRangeLive = '',
             workingPatternLive = '',
-            locationLive = '',
-            radiusLive = '';
+            regionLive = ''
 
         if (_hasString(keyword)) {
             keywordLive = keyword;
@@ -113,41 +111,41 @@ jQuery(document).ready(function ($) {
             }
         }
 
-        if (_hasString(thisLocation)) {
-            locationLive = '&location=' + thisLocation;
-            radiusLive = '&radius=' + thisRadius;
-            str = '?s=' + keywordLive + roleTypeLive + salaryRangeLive + workingPatternLive + locationLive + radiusLive;
-            getJSON(thisLocation, thisRadius);
+        if (!_hasString(region)) {
+            regionLive = '';
         } else {
-            str = '?s=' + keywordLive + roleTypeLive + salaryRangeLive + workingPatternLive;
-            localStorage.setItem("currentSearch", str);
-
-            window.location = justice.site_url + str;
+            if (region === 'all') {
+                regionLive = '';
+            } else {
+                regionLive = '&region=' + region;
+            }
         }
+
+        str = '?s=' + keywordLive + roleTypeLive + salaryRangeLive + workingPatternLive + regionLive;
+        localStorage.setItem("currentSearch", str);
+
+        window.location = justice.site_url + str;
+    
     });
 
     $('#mini-search-form').on('submit', function (e) {
         e.preventDefault();
         var keyword = $(this).find("#keyword").val() || '',
-            thisLocation = $(this).find('#location').val() || '',
-            locationLive = '',
-            radiusLive,
-            keywordLive = '',
-            thisRadius = $(this).find('#radius').val() || 10;
+            region = $(this).find('#region').val() || '',
+            regionLive = '',
+            keywordLive = ''
 
         if (_hasString(keyword)) {
             keywordLive = keyword;
         }
 
-        if (_hasString(thisLocation)) {
-            locationLive = '&location=' + thisLocation;
-            radiusLive = '&radius=' + parseInt(thisRadius);
-            str = '?s=' + keywordLive + locationLive + radiusLive;
-            getJSON(thisLocation, thisRadius);
-        } else {
-            str = '?s=' + keywordLive;
-            window.location = justice.site_url + str;
-        }
+        if (_hasString(region)) {
+            regionLive = '&region=' + region;
+        } 
+
+        str = '?s=' + keywordLive + regionLive;
+        window.location = justice.site_url + str;
+    
     });
 
     function _hasString(string) {

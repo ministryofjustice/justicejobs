@@ -9,7 +9,6 @@ mix.js([
         'src/js/modal.js',
         'src/js/job-search-results.js',
         'src/js/job-search-form.js',
-        'src/js/map.js',
         'src/js/main.js'
     ], dist + 'js/main.min.js')
     .js('src/js/jj-gtm.js', dist + 'js/jj-gtm.min.js')

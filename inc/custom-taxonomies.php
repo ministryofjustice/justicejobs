@@ -158,3 +158,42 @@ function job_locations_custom_taxonomy() {
 
 }
 add_action( 'init', 'job_locations_custom_taxonomy', 0 );
+
+// Register Job Region Custom Taxonomy
+function job_region_custom_taxonomy() {
+
+	$labels = array(
+		'name'                       => 'Job Regions',
+		'singular_name'              => 'Job Region',
+		'menu_name'                  => 'Job Regions',
+		'all_items'                  => 'All Regions',
+		'parent_item'                => 'Parent Region',
+		'parent_item_colon'          => 'Parent Region:',
+		'new_item_name'              => 'New Region Name',
+		'add_new_item'               => 'Add New Region',
+		'edit_item'                  => 'Edit Region',
+		'update_item'                => 'Update Region',
+		'view_item'                  => 'View Region',
+		'separate_items_with_commas' => 'Separate regions with commas',
+		'add_or_remove_items'        => 'Add or remove regions',
+		'choose_from_most_used'      => 'Choose from the most used',
+		'popular_items'              => 'Popular Regions',
+		'search_items'               => 'Search Regions',
+		'not_found'                  => 'Not Found',
+		'no_terms'                   => 'No regions',
+		'items_list'                 => 'Regions list',
+		'items_list_navigation'      => 'Regions list navigation',
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => true,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => true,
+	);
+	register_taxonomy( 'job_region', array( 'job' ), $args );
+
+}
+add_action( 'init', 'job_region_custom_taxonomy', 0 );
